@@ -47,7 +47,7 @@ class ReLULayer(object):
         return output
     def backward(self, top_diff):  # 反向传播的计算
         # TODO：ReLU层的反向传播，计算本层损失
-        bottom_diff = np.maximum(0, top_diff)
+        bottom_diff = top_diff * (self.input >= 0.0)
         return bottom_diff
 
 class SoftmaxLossLayer(object):
@@ -57,7 +57,7 @@ class SoftmaxLossLayer(object):
         # TODO：softmax 损失层的前向传播，计算输出结果
         input_max = np.max(input, axis=1, keepdims=True)
         input_exp = np.exp(input - input_max)
-        self.prob = np.divide(input_exp, np.sum(input_exp))
+        self.prob = np.divide(input_exp, np.sum(input_exp, axis=1, keepdims=True))
         return self.prob
     def get_loss(self, label):   # 计算损失
         self.batch_size = self.prob.shape[0]
