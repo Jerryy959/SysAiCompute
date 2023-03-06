@@ -119,8 +119,8 @@ class MNIST_MLP(object):
         accuracy = np.mean(pred_results == self.test_data[:,-1])
         print('Accuracy in test set: %f' % accuracy)
 
-HIDDEN1 = 32
-HIDDEN2 = 16
+HIDDEN1 = 256
+HIDDEN2 = 256
 OUT = 10
 def run_mnist():
     batch_size = 10000
