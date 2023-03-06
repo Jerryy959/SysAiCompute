@@ -153,6 +153,7 @@ def build_mnist_mlp(param_dir='weight.npy'):
     mlp.init_model()
     mlp.train()
     mlp.save_model('mlp-%d-%d-%depoch.npy' % (h1, h2, e))
+    mlp.save_model('../exp_2_2_mnist_mlp_dlp/stu_upload/weight.npy')
     # mlp.load_model('mlp-%d-%d-%depoch.npy' % (h1, h2, e))
     return mlp
 
